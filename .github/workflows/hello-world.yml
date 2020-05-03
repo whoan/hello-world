@@ -1,0 +1,48 @@
+name: Hello world
+
+on: [push]
+
+jobs:
+
+  docker-hub:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./docker-build-with-cache-action/
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        image_name: hello-world
+
+  git-hub:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./docker-build-with-cache-action/
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"  # you don't need to manually set this secret. GitHub does it on your behalf
+        registry: docker.pkg.github.com
+        image_name: hello-world
+
+  aws-ecr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./docker-build-with-cache-action/
+      with:
+        username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+        password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
+        image_name: hello-world
+
+  google-cloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ./docker-build-with-cache-action/
+      with:
+        username: _json_key
+        password: "${{ secrets.GCLOUD_JSON_KEY }}"
+        registry: gcr.io
+        image_name: hello-world
