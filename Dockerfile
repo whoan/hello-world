@@ -10,6 +10,7 @@ RUN echo 3
 FROM alpine:3.11.6 AS fourth-stage
 RUN echo 3
 RUN echo 4
+RUN echo 5
 
 FROM alpine:3.11.6
 
