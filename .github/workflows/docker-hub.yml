@@ -1,6 +1,8 @@
 name: docker-hub
 
-on: [push]
+on:
+  schedule:
+    - cron:  '17 7 * * *'
 
 jobs:
 
