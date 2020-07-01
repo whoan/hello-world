@@ -2,7 +2,7 @@ name: docker-hub
 
 on:
   schedule:
-    - cron:  '17 7 * * *'
+    - cron:  '38 10 * * *'
 
 jobs:
 
