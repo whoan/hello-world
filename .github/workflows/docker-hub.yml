@@ -6,11 +6,15 @@ jobs:
 
   build-dh:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['one', 'two']
     steps:
     - uses: actions/checkout@v1
-    - uses: whoan/docker-build-with-cache-action@master
+    - uses: whoan/docker-build-with-cache-action@custom-stages-name
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         image_name: hello-world
-        image_tag: latest,anotherone
+        image_tag: ${{ matrix.version }}
+        stages_image_name: hello-world-${{ matrix.version }}-stages
