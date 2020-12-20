@@ -1,0 +1,15 @@
+name: docker-hub
+
+on: [push]
+
+jobs:
+
+  build-compose:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: whoan/docker-build-with-cache-action@support-compose-files
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        compose_file: docker-compose.yml
