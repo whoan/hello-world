@@ -1,4 +1,4 @@
-name: docker-hub
+name: docker-compose
 
 on: [push]
 
