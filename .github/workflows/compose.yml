@@ -15,7 +15,7 @@ jobs:
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         compose_file: docker-compose.yml
 
-    - uses: whoan/docker-build-with-cache-action@fix-compose-for-non-default-registries
+    - uses: whoan/docker-build-with-cache-action@v5
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
