@@ -8,8 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: whoan/docker-build-with-cache-action@support-compose-files
+
+    - uses: whoan/docker-build-with-cache-action@v5
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        compose_file: docker-compose.yml
+
+    - uses: whoan/docker-build-with-cache-action@v5
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: docker.pkg.github.com
         compose_file: docker-compose.yml
