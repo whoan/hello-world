@@ -1,0 +1,16 @@
+name: aws-ecr-public
+
+on: [push]
+
+jobs:
+
+  build-ecr-public:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: whoan/docker-build-with-cache-action@support-aws-ecr-public
+      with:
+        username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+        password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        registry: public.ecr.aws
+        image_name: hello-world
