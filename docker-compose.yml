@@ -34,5 +34,3 @@ services:
   redis:
     image: redis:5
     restart: always
-    volumes:
-      - /etc/localtime:/etc/localtime:ro

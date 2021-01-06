@@ -2,6 +2,7 @@
 ![](https://github.com/whoan/hello-world/workflows/git-hub/badge.svg)
 ![](https://github.com/whoan/hello-world/workflows/google-cloud/badge.svg)
 ![](https://github.com/whoan/hello-world/workflows/aws-ecr/badge.svg)
+![](https://github.com/whoan/hello-world/workflows/aws-ecr-public/badge.svg)
 
 # Hello World
 
