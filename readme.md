@@ -6,4 +6,4 @@
 
 # Hello World
 
-This repo uses [docker-build-with-cache-action action](https://github.com/whoan/docker-build-with-cache-action) to build and push a docker image to different registries.
+This repo uses [docker-build-with-cache-action action](https://github.com/whoan/docker-build-with-cache-action) to build and push docker images to different registries.
