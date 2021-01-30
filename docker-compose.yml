@@ -37,11 +37,11 @@ services:
 
   gh_new_1:
     build: .
-    image: ghcr.io/whoan/some-thing
+    image: ghcr.io/whoan/some-thing:latest
 
   gh_new_2:
     build: .
-    image: ghcr.io/whoan/some
+    image: ghcr.io/whoan/some:latest
 
   redis:
     image: redis:5
