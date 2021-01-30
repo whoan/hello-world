@@ -9,15 +9,22 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: whoan/docker-build-with-cache-action@fix-yaml-parsing
+    - uses: whoan/docker-build-with-cache-action@fix-regex-to-get-service-name
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         compose_file: docker-compose.yml
 
-    - uses: whoan/docker-build-with-cache-action@fix-yaml-parsing
+    - uses: whoan/docker-build-with-cache-action@fix-regex-to-get-service-name
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
         registry: docker.pkg.github.com
+        compose_file: docker-compose.yml
+
+    - uses: whoan/docker-build-with-cache-action@fix-regex-to-get-service-name
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
         compose_file: docker-compose.yml
