@@ -35,13 +35,13 @@ services:
       dockerfile: Dockerfile-gh2
     image: docker.pkg.github.com/whoan/hello-world/gh-2:latest
 
-  gh_new_1:
+  gh_some_thing:
     build: .
-    image: ghcr.io/whoan/some-thing:latest
+    image: docker.pkg.github.com/whoan/hello-world/some-thing:latest
 
-  gh_new_2:
+  gh_some:
     build: .
-    image: ghcr.io/whoan/some:latest
+    image: docker.pkg.github.com/whoan/hello-world/some:latest
 
   redis:
     image: redis:5

@@ -22,9 +22,3 @@ jobs:
         registry: docker.pkg.github.com
         compose_file: docker-compose.yml
 
-    - uses: whoan/docker-build-with-cache-action@fix-regex-to-get-service-name
-      with:
-        username: whoan
-        password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: ghcr.io
-        compose_file: docker-compose.yml
