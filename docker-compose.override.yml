@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  dh1:
+    build: hello-world-service-1/.
+
+  dh_2:
+    build:
+      context: hello-world-service-2/.
+      dockerfile: Dockerfile-custom
+    image: whoan/hello_world_service-2
+    restart: always
