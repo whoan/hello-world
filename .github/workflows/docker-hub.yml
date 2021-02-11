@@ -15,5 +15,3 @@ jobs:
         build_extra_args: '{"--build-arg": "myarg=hola\nmundo"}'
         image_name: hello-world
         image_tag: latest,anotherone
-        push_image_and_stages: false
-        pull_image_and_stages: false
