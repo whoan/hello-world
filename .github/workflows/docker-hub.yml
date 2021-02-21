@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: whoan/docker-build-with-cache-action@support-json-for-extra-build-args
+    - uses: whoan/docker-build-with-cache-action@fix-json-extra-args
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        build_extra_args: '{"--build-arg": "myarg=hola\nmundo"}'
+        build_extra_args: '{"--build-arg": "myarg=hola\nmundo", "--target": "one-target"}'
         image_name: hello-world
         image_tag: latest,anotherone
