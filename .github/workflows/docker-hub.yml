@@ -12,6 +12,6 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        build_extra_args: '{"--build-arg": "myarg=hola\nmundo", "--target": "one-target"}'
+        build_extra_args: "--build-arg=PARAM=value --build-arg=PARAM1=value1 --build-arg=PARAM2=value2 "
         image_name: hello-world
         image_tag: latest,anotherone
