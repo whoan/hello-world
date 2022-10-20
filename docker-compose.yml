@@ -10,6 +10,9 @@ services:
     environment:
       API_PORT: 80
 
+  dh3:
+    image: whoan/hello_world_service-2:latest
+
   gh:
     build:
       context: .
