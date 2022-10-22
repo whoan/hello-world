@@ -8,10 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: whoan/docker-build-with-cache-action@issue-95
+    - uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         build_extra_args: '{"--build-arg": ["foo=bar", "one=two"], "--target": "one-target"}'
         image_name: hello-world
         image_tag: latest,anotherone
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        image_name: hello-world-multi-tag
+        image_tag: one,two
