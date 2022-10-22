@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-gh2
-    image: docker.pkg.github.com/whoan/hello-world/gh-2:latest
+    image: docker.pkg.github.com/whoan/hello-world/gh-2:latest # some comment here
 
   gh_some_thing:
     build: .
