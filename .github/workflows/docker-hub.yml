@@ -16,8 +16,11 @@ jobs:
         image_name: hello-world
         image_tag: latest,anotherone
     - uses: whoan/docker-build-with-cache-action@next
+      id: multi-tag
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         image_name: hello-world-multi-tag
         image_tag: one,two,three
+    - name: Get full image name from multi-tag step
+      run: echo "Full image name -> ${{ steps.multi-tag.outputs.FULL_IMAGE_NAME }}"
