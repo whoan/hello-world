@@ -20,4 +20,4 @@ jobs:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         image_name: hello-world-multi-tag
-        image_tag: one,two
+        image_tag: one,two,three
