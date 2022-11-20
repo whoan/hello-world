@@ -14,4 +14,3 @@ jobs:
         password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         registry: public.ecr.aws
         image_name: hello-world
-        push_image_and_stages: false
