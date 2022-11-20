@@ -14,3 +14,46 @@ jobs:
         password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
         image_name: hello-world
+
+  build-ecr-public:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+        password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        registry: public.ecr.aws
+        image_name: hello-world-public
+
+  build-ecr-with-role:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.NON_ROOT_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.NON_ROOT_SECRET_ACCESS_KEY }}
+        role-to-assume: arn:aws:iam::861729690598:role/my-ecr-role
+        aws-region: us-west-1
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
+        image_name: hello-world-with-role
+
+  build-ecr-with-role-public:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.NON_ROOT_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.NON_ROOT_SECRET_ACCESS_KEY }}
+        role-to-assume: arn:aws:iam::861729690598:role/my-ecr-role
+        aws-region: us-east-1
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        registry: public.ecr.aws
+        image_name: hello-world-with-role-public
