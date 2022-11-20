@@ -9,13 +9,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: whoan/docker-build-with-cache-action@next
+    - uses: whoan/docker-build-with-cache-action@master
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         compose_file: docker-compose.yml > docker-compose.override.yml
 
-    - uses: whoan/docker-build-with-cache-action@next
+    - uses: whoan/docker-build-with-cache-action@master
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
