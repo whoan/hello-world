@@ -25,6 +25,11 @@ services:
       dockerfile: Dockerfile-gh2
     image: docker.pkg.github.com/whoan/hello-world/gh-2:latest # some comment here
 
+  gh_3: &service-config
+  gh_4:
+    <<: *service-config
+    image: docker.pkg.github.com/whoan/hello-world/gh-4:latest
+
   gh_some_thing:
     build: .
     image: docker.pkg.github.com/whoan/hello-world/some-thing:latest
