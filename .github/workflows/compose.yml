@@ -48,4 +48,5 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        context: foo
         compose_file: foo/docker-compose.yml
