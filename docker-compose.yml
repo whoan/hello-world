@@ -17,6 +17,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-gh
+      args:
+        FOO: bar
+        SOME: "thing here"
     image: docker.pkg.github.com/whoan/hello-world/gh:latest
 
   gh_2:
