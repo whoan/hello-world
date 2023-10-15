@@ -38,3 +38,14 @@ jobs:
         registry: docker.pkg.github.com
         compose_file: docker-compose.yml
         services_regex: '(dh.*|gh_some)'
+
+  build-compose-2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: whoan/docker-build-with-cache-action@issue-133
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        compose_file: foo/docker-compose.yml
