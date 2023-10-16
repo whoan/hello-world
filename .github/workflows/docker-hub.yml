@@ -33,7 +33,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        image_name: hello-world-v1
+        image_name: whoan/hello-world-v1
 
   build-dh-v2:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        image_name: hello-world-v2
+        image_name: whoan/hello-world-v2
 
   build-dh-v3:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        image_name: hello-world-v3
+        image_name: whoan/hello-world-v3
 
   build-dh-v4:
     runs-on: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
-        image_name: hello-world-v4
+        image_name: whoan/hello-world-v4
 
   build-dh-v5:
     runs-on: ubuntu-latest
