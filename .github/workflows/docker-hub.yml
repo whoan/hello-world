@@ -15,6 +15,7 @@ jobs:
         build_extra_args: '{"--build-arg": ["foo=bar", "one=two"], "--target": "one-target"}'
         image_name: hello-world
         image_tag: latest,anotherone
+
     - uses: whoan/docker-build-with-cache-action@master
       id: multi-tag
       with:
@@ -24,6 +25,24 @@ jobs:
         image_tag: one,two,three
     - name: Get full image name from multi-tag step
       run: echo "Full image name -> ${{ steps.multi-tag.outputs.FULL_IMAGE_NAME }}"
+
+    - name: Build with DOCKER_BUILDKIT enabled
+      env:
+        DOCKER_BUILDKIT: 1
+      uses: whoan/docker-build-with-cache-action@issue-139
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        image_name: hello-world-buildkit
+
+    - name: Build without DOCKER_BUILDKIT enabled
+      env:
+        DOCKER_BUILDKIT: 0
+      uses: whoan/docker-build-with-cache-action@issue-139
+      with:
+        username: whoan
+        password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
+        image_name: hello-world-no-buildkit
 
   build-dh-v1:
     runs-on: ubuntu-latest
