@@ -9,21 +9,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: whoan/docker-build-with-cache-action@issue-134
+    - uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
         compose_file: docker-compose.yml > docker-compose.override.yml
 
-    - uses: whoan/docker-build-with-cache-action@issue-134
+    - uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: docker.pkg.github.com
+        registry: ghcr.io
         compose_file: docker-compose.yml
 
     - name: Service regex (Docker Hub)
-      uses: whoan/docker-build-with-cache-action@issue-134
+      uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
@@ -31,11 +31,11 @@ jobs:
         services_regex: '(dh.*|gh_some)'
 
     - name: Service regex (GitHub Registry)
-      uses: whoan/docker-build-with-cache-action@issue-134
+      uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: docker.pkg.github.com
+        registry: ghcr.io
         compose_file: docker-compose.yml
         services_regex: '(dh.*|gh_some)'
 
@@ -44,7 +44,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - uses: whoan/docker-build-with-cache-action@issue-134
+    - uses: whoan/docker-build-with-cache-action@next
       with:
         username: whoan
         password: "${{ secrets.DOCKER_HUB_PASSWORD }}"
