@@ -19,7 +19,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: docker.pkg.github.com
+        registry: ghcr.io
         compose_file: docker-compose.yml
 
     - name: Service regex (Docker Hub)
@@ -35,7 +35,7 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: docker.pkg.github.com
+        registry: ghcr.io
         compose_file: docker-compose.yml
         services_regex: '(dh.*|gh_some)'
 
