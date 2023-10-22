@@ -1,3 +1,9 @@
 FROM alpine:3.11.6
 
+RUN echo 1
+
+RUN echo 2
+
+RUN echo 3
+
 ENTRYPOINT echo GitHub
