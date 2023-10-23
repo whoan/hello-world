@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  build-gh-new:
+  build-gh-old:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -12,11 +12,10 @@ jobs:
       with:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"  # you don't need to manually set this secret. GitHub does it on your behalf
-        registry: ghcr.io
-        image_name: hello-world-new
-        stages_image_name: hello-world-new:tag_is_ignored  # tag is ignored when a custom cache image name is given
+        registry: docker.pkg.github.com
+        image_name: hello-world-old
 
-  build-gh-old:
+  build-gh-old-no-buildkit:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -27,4 +26,52 @@ jobs:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
         registry: docker.pkg.github.com  # old registry only works disabling BUILDKIT
-        image_name: hello-world-old
+        image_name: hello-world-old-no-buildkit
+
+  build-gh-ghcr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        image_name: hello-world-ghcr
+        stages_image_name: hello-world-new:tag_is_ignored  # tag is ignored when a custom cache image name is given
+
+  build-gh-no-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        image_name: hello-world-no-push
+        push_image_and_stages: false
+
+  build-gh-push-on-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        image_name: hello-world-push-on-pr
+        push_image_and_stages: on:pull_request
+
+  build-gh-push-on-push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        image_name: hello-world-push-on-push
+        push_image_and_stages: on:push
