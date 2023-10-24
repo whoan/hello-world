@@ -38,3 +38,24 @@ jobs:
         password: "${{ secrets.GITHUB_TOKEN }}"
         registry: ghcr.io
         image_name: hello-world-ghcr
+
+  build-gh-cache-in-artifact:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-cache
+      continue-on-error: true
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: whoan
+        password: "${{ secrets.GITHUB_TOKEN }}"
+        registry: ghcr.io
+        image_name: hello-world-cache-in-artifact
+        build_extra_args: "--push --cache-to type=local,dest=./image-cache/"
+        push_image_and_stages: false
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-cache
+        path: ./image-cache/
