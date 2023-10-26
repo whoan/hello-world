@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  build-gh:
+  build-gh-new:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -13,7 +13,7 @@ jobs:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"  # you don't need to manually set this secret. GitHub does it on your behalf
         registry: ghcr.io
-        image_name: hello-world
+        image_name: hello-world-new
 
   build-gh-on-next:
     runs-on: ubuntu-latest
