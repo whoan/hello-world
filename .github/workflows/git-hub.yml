@@ -15,7 +15,7 @@ jobs:
         registry: ghcr.io
         image_name: hello-world-new
 
-  build-gh-on-next:
+  build-gh-old:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,15 +26,4 @@ jobs:
         username: whoan
         password: "${{ secrets.GITHUB_TOKEN }}"
         registry: docker.pkg.github.com  # old registry only works disabling BUILDKIT
-        image_name: hello-world-ghcr
-
-  build-gh-ghcr:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: whoan/docker-build-with-cache-action@next
-      with:
-        username: whoan
-        password: "${{ secrets.GITHUB_TOKEN }}"
-        registry: ghcr.io
-        image_name: hello-world-ghcr
+        image_name: hello-world-old
