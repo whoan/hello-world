@@ -20,6 +20,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: whoan/docker-build-with-cache-action@next
+      env:
+        DOCKER_BUILDKIT: 0
       with:
         username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
         password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
