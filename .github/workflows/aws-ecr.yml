@@ -15,7 +15,7 @@ jobs:
         registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
         image_name: hello-world
 
-  build-ecr-custom:
+  build-ecr-public-custom:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -25,9 +25,9 @@ jobs:
       with:
         username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
         password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-        registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
-        image_name: hello-world-custom-old
-        stages_image_name: hello-world-custom-old-cache
+        registry: public.ecr.aws
+        image_name: hello-world-public-custom-old
+        stages_image_name: hello-world-public-custom-old-cache
 
   build-ecr-public:
     runs-on: ubuntu-latest
