@@ -15,6 +15,18 @@ jobs:
         registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
         image_name: hello-world
 
+  build-ecr-custom:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: whoan/docker-build-with-cache-action@next
+      with:
+        username: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+        password: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        registry: 861729690598.dkr.ecr.us-west-1.amazonaws.com
+        image_name: hello-world-custom
+        stages_image_name: hello-world-custom-cache
+
   build-ecr-public:
     runs-on: ubuntu-latest
     steps:
