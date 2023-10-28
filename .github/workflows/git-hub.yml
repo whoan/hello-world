@@ -14,6 +14,7 @@ jobs:
         password: "${{ secrets.GITHUB_TOKEN }}"  # you don't need to manually set this secret. GitHub does it on your behalf
         registry: ghcr.io
         image_name: hello-world-new
+        stages_image_name: hello-world-new:tag_is_ignored  # tag is ignored when a custom cache image name is given
 
   build-gh-old:
     runs-on: ubuntu-latest
